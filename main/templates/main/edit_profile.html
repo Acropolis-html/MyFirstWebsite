@@ -1,0 +1,42 @@
+{% extends 'main/layout.html' %}
+
+{% block title %}Редактирование профиля{% endblock %}
+
+{% block body %}
+<div class="container" style="max-width: 800px; margin: 20px auto; font-family: Arial, sans-serif; text-align: center; display: flex; flex-direction: column; align-items: center; margin-left: 50px;">
+    <h1 class="profile-box-title" style="width: 400px;font-size: 2.5rem; padding: 15px; color: white; background: linear-gradient(90deg, #20155e,#7b68ee,#20155e); border-radius: 10px; box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1); margin-bottom: 20px;margin-left:250px; text-align: center">Редактировать профиль</h1>
+
+    <form method="post" style="background: linear-gradient(135deg, #71b7e6, #9b59b6); padding: 20px; border-radius: 10px; box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1); width: 100%; max-width: 600px; display: flex; flex-direction: column; margin-top: -10px; align-items: center;">
+        {% csrf_token %}
+
+        <div style="margin-bottom: 15px; width: 100%;">
+            <label for="{{ form.username.id_for_label }}" style="font-weight: bold; color: #333; display: block; margin-bottom: 5px;">{{ form.username.label }}</label>
+            {{ form.username }}
+        </div>
+
+        <div style="margin-bottom: 15px; width: 100%;">
+            <label for="{{ form.email.id_for_label }}" style="font-weight: bold; color: #333; display: block; margin-bottom: 5px;">{{ form.email.label }}</label>
+            {{ form.email }}
+        </div>
+
+        <div style="margin-bottom: 15px; width: 100%;">
+            <label for="{{ form.current_password.id_for_label }}" style="font-weight: bold; color: #333; display: block; margin-bottom: 5px;">Текущий пароль</label>
+            {{ form.current_password }}
+        </div>
+
+        <div style="margin-bottom: 15px; width: 100%;">
+            <label for="{{ form.new_password.id_for_label }}" style="font-weight: bold; color: #333; display: block; margin-bottom: 5px;">Новый пароль</label>
+            {{ form.new_password }}
+        </div>
+
+        <div style="margin-bottom: 15px; width: 100%;">
+            <label for="{{ form.confirm_password.id_for_label }}" style="font-weight: bold; color: #333; display: block; margin-bottom: 5px;">Подтверждение нового пароля</label>
+            {{ form.confirm_password }}
+        </div>
+
+        <button type="submit" class="btn btn-success" style="padding: 10px 20px; background-color: #2575fc; color: white; border: none; border-radius: 8px; font-weight: bold; transition: background 0.3s ease; cursor: pointer; width: 100%; max-width: 200px; margin-top: 20px;">
+            Сохранить изменения
+        </button>
+    </form>
+</div>
+{% endblock %}

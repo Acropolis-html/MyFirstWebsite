@@ -1,0 +1,16 @@
+{% extends 'main/layout.html' %}
+
+{% block title %}Авторизация{% endblock %}
+
+{% block body %}
+    <div class="gradient">
+        <h1>Страница Авторизации</h1>
+        <form method="post">
+            {% csrf_token %}
+            <div class="gradient-text">
+                {{ form.as_p }}
+            </div>
+            <button type="submit">Войти</button>
+        </form>
+    </div>
+{% endblock %}

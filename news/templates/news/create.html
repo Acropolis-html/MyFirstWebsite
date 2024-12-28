@@ -1,0 +1,19 @@
+{% extends 'main/layout.html' %}
+
+{% block title %}Форум{% endblock %}
+
+{% block body %}
+        <div class="features">
+            <h1 style="margin-left: 130px">Форум</h1>
+          <form method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+            {{ form.title }}<br>
+              {{ form.anons }}<br>
+              {{ form.text }}<br>
+              {{ form.date }}<br>
+              <span>{{ error }}</span>
+              <button class="btn btn-success" type="submit"><i class="fa-solid fa-check"></i> Добавить статью</button>
+              <button class="btn btn-light" onclick="window.open('news','_self')"><i class="fa-regular fa-bookmark"></i> Перейти в новости</button>
+          </form>
+        </div>
+{% endblock %}

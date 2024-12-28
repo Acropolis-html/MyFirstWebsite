@@ -1,0 +1,42 @@
+{% extends 'main/layout.html'%}
+
+{% block title %}Личный Кабинет{% endblock %}
+
+{% block body%}
+<div class="container" style="max-width: 800px; margin: 20px auto; font-family: Arial, sans-serif; text-align: center; margin-left: 150px">
+    <h1 class="profile-box-title" style="font-size: 2.5rem; padding: 15px; color: white; background: linear-gradient(90deg, #20155e,#7b68ee,#20155e); border-radius: 10px; box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1); margin-bottom: 20px; text-align: center;">
+        Личный кабинет
+    </h1>
+
+    <div class="profile-box" style="background: linear-gradient(135deg, #71b7e6, #9b59b6); padding: 20px; border-radius: 10px; box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1); color: white; text-align: center; margin-bottom: 30px;">
+        <p style="font-size: 1.2rem;"><strong>Имя пользователя:</strong> {{ user.username }}</p>
+        <p style="font-size: 1.2rem;"><strong>Email:</strong> {{ user.email }}</p>
+        <p style="font-size: 1.2rem;"><strong>Дата регистрации:</strong> {{ user.date_joined }}</p>
+    </div>
+
+    <h2 class="profile-box-title" style="width: 400px;font-size: 2.5rem; padding: 15px; color: white; background: linear-gradient(90deg, #20155e,#7b68ee,#20155e); border-radius: 10px; box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1); margin-bottom: 20px;margin-left:185px; text-align: center;"><i class="fa-solid fa-arrow-down"></i> Ваши статьи <i class="fa-solid fa-arrow-down"></i></h2>
+
+    <ul style="list-style-type: none; padding: 0; margin: 0 auto; max-width: 600px; text-align: center;">
+        {% for article in user.articles.all %}
+            <li style="background: #f8f8f8; margin: 10px 0; padding: 15px; border-radius: 8px;
+                transition: transform 0.3s ease, box-shadow 0.3s ease; color: #333; text-align: left;">
+                <a href="{% url 'detail' article.id %}"
+                   style="text-decoration: none; color: #2575fc; font-weight: bold; display: block;">
+                    {{ article.title }}
+                </a>
+            </li>
+        {% empty %}
+            <li style="text-align: center;width:300px; font-style: italic;background: linear-gradient(45deg, #0d0d0d, #2e2e2e); margin-top: 20px;color: white;padding: 20px;border-radius: 10px;margin-left:148px">
+                У вас пока нет статей.
+            </li>
+        {% endfor %}
+    </ul>
+
+    <a href="{% url 'update_profile' %}"
+       style="display: inline-block; margin-top: 20px; padding: 12px 25px; font-size: 1.2rem;
+       font-weight: bold; color: white; background: #2575fc; border: none; border-radius: 10px;
+       text-align: center; text-decoration: none; transition: background 0.3s ease, transform 0.3s ease;">
+        Редактировать профиль
+    </a>
+</div>
+{% endblock %}

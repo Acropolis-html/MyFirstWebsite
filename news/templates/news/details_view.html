@@ -1,0 +1,19 @@
+{% extends 'main/layout.html' %}
+
+{% block title %}{{ Article.title }}{% endblock %}
+
+{% block body %}
+        <div class="features">
+                <h1>{{ Article.title }}</h1>
+                <p>{{ Article.date }}</p>
+                <p>{{ Article.text|linebreaks }}</p>
+                {% if user == Article.author %}
+                        <a href="{% url 'delete' Article.id %}" class="btn btn-danger">
+                                <i class="fa-solid fa-trash"></i> Удалить
+                        </a>
+                        <a href="{% url 'update' Article.id %}" class="btn btn-warning">
+                                <i class="fa-solid fa-wand-magic-sparkles"></i> Изменить
+                        </a>
+                {% endif %}
+        </div>
+{% endblock %}

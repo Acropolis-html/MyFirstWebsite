@@ -1,0 +1,83 @@
+{% load static %}
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>{% block title %}{% endblock %}</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="{% static 'main/css/main.css' %}">
+    <link rel="stylesheet" href=" https://use.fontawesome.com/releases/v6.4.4/css/all.css">
+</head>
+<body>
+    {% if request.user.is_authenticated %}
+    <a href="{% url 'profile' %}" style="position: fixed; font-weight: bold; right: 0; max-width: 200px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">
+    <button class="btn btn-primary" style="font-weight: bold; text-align: left; padding-right: 10px;">
+        <i class="fa-solid fa-user"></i> {{ user.username }}
+    </button>
+    </a>
+    <a href="{% url 'logout' %}" class="btn btn-info login-btn" style="position: fixed; font-weight: bold; right: 0; margin-top: 42px;">
+    <i class="fa-solid fa-circle-exclamation"></i> Выйти
+    </a>
+    {% else %}
+    <a href="{% url 'register' %}" class="top-right-link"><button class="btn btn-info register-btn" style="position: fixed; font-weight: bold; margin-left: 1130px" ><i class="fa-regular fa-user"></i> Зарегистрироваться</button></a>
+    <a href="{% url 'login' %}" class="top-right-link"><button class="btn btn-info login-btn" style="position: fixed;font-weight: bold; margin-left: 1241px; margin-top: 42px" ><i class="fa-solid fa-user"></i> Войти</button></a>
+    {% endif %}
+    <script>
+        const pathname = window.location.pathname;
+
+        if (pathname === '/news') {
+            const loginButton = document.querySelector('.login-btn');
+            const registerButton = document.querySelector('.register-btn');
+            const lastParagraph = document.querySelector('p.last');
+            const logoutButton = document.querySelector('a.top-right-link');
+
+            if (loginButton) loginButton.style.display = 'none';
+            if (registerButton) registerButton.style.display = 'none';
+            if (lastParagraph) lastParagraph.style.display = 'none';
+            if (logoutButton) logoutButton.style.display = 'none';
+        }
+
+        if (pathname === '/register') {
+            const loginButton = document.querySelector('.login-btn');
+            const registerButton = document.querySelector('.register-btn');
+
+            if (loginButton) loginButton.style.display = 'block';
+            if (registerButton) registerButton.style.display = 'none';
+        }
+
+        if (pathname === '/login') {
+            const loginButton = document.querySelector('.login-btn');
+            const registerButton = document.querySelector('.register-btn');
+
+            if (loginButton) loginButton.style.display = 'none';
+            if (registerButton) registerButton.style.display = 'block';
+        }
+    </script>
+    <aside>
+        <img src="{% static 'main/img/image.jpg' %}" alt="Кот">
+        <span class='logo'>Кошка</span>
+        <h3>Мои сайты</h3>
+        <ul>
+            <a href="/html"><li><i class="fa-solid fa-house"></i> Главная</li></a>
+            <a href="/about"><li><i class="fa-solid fa-magnifying-glass"></i> Про нас</li></a>
+            <a href="/test"><li><i class="fa-solid fa-paper-plane"></i> Контакты</li></a>
+            <a href="/news"><li><i class="fa-solid fa-comment"></i> Новости</li></a>
+            <a href="/create"><li><button class="btn btn-info"><i class="fas fa-plus-circle"></i> Добавить запись</button></li></a>
+        </ul>
+        <style>
+          a {
+          text-decoration: none;
+          }
+        </style>
+    </aside>
+    <main>
+        {% block body %}
+      {% endblock %}
+    </main>
+</body>
+</html>

@@ -1,0 +1,31 @@
+{% extends 'main/layout.html' %}
+
+{% block title %}Срочные Новости{% endblock %}
+
+{% block body %}
+        <div class="features">
+                <h1 style="font-weight: bold;">Срочные новости</h1>
+                {% if news %}
+                        {% for i in news %}
+                                <style>
+                                        .gradient-box {
+                                            background: linear-gradient(45deg, #0d0d0d, #2e2e2e);
+                                            color: white;
+                                            padding: 20px;
+                                            border-radius: 10px;
+                                            text-align: center;
+                                            margin-left: 310px
+                                                }
+                                </style>
+                                <div class="gradient-box">
+                                        <h3>{{ i.title }}</h3>
+                                        <p>{{ i.anons }}</p>
+                                        <p><strong>Автор:</strong> {{ i.author.username }}</p>
+                                        <a href="{% url 'detail' i.id %}"><button style="background-color: #141414; color: white; border: none; padding: 10px 20px; border-radius: 5px;">На страницу статьи</button></a>
+                                </div>
+                        {% endfor%}
+                {% else %}
+                        <p>У вас нет записей(((</p>
+                {% endif %}
+        </div>
+{% endblock %}

@@ -1,0 +1,104 @@
+body {
+    background: linear-gradient(to right, #ec7513,#cc1414,#340548,#1a1820);
+}
+aside {
+    position: fixed;
+    top: 0;
+    left: 0;
+    background: linear-gradient(to right, #000, #1a1820 );
+    width: 20%;
+    padding: 2.5%;
+    height: 100vh;
+    color: #fff;
+    border-right: 5px solid #4d4d4d;
+    z-index: 1000;
+}
+
+body {
+    margin-left: 30%;
+    line-height: 1.6;
+}
+
+aside img {
+    width: 80px;
+    float:left;
+    position:relative;
+    top: -15px
+}
+
+aside .logo {
+    font-size: 40px;
+    margin-left: 10px;
+    font-weight: bold;
+    position: relative;
+    top: -3px;
+}
+
+aside h3 {
+    margin-top: 15px;
+    font-size: 25px;
+    position: relative;
+    left: -70px;
+    top: 10px;
+}
+aside ul {list-style: none}
+aside ul li {
+    font-stretch: condensed;
+    color: #fff;
+    display: block;
+    margin-top: 20px;
+    transition: all .4s ease
+}
+
+aside ul li:hover, aside ul a:hover {
+    color: #ed892b;
+    text-decoration: none;
+    transform: scale(1.06);
+}
+
+main .features {
+    float: left;
+    color: #fff;
+    margin-top: 40px;
+    margin-left: 10px;
+    text-align: center;
+    width: 75%;
+}
+
+main .features h1 {font-size: 50px}
+main .features p {max-width: 400px; margin: 20px auto;}
+
+.gradient-box {
+    float: left;
+    clear: both;
+    width: 400px;
+    margin: 20px 34%;
+    text-align: left;
+}
+
+form {
+    margin-left: 32%;
+    width: 500px;
+    margin-top: 5%;
+}
+
+h1 {
+    font-weight: bold;
+}
+
+.gradient h1 {
+    text-align: center;
+}
+.gradient {
+    background: linear-gradient(135deg, #71b7e6, #9b59b6);
+    border-radius: 20px;
+    padding: 25px;
+    max-width: 450px;
+    margin: 50px auto;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+
+.gradient-text {
+    margin-right: 300px
+}
+
+
